@@ -5,7 +5,10 @@ function generatePassword(){
   // ask user if the length of the password
   var passwordLength = window.prompt('How many characters would you like your password to have?(Within 8-128)');
   // Conditional recursive function call on passwordLength
-  if (passwordLength === "" || passwordLength === null) {
+  if(passwordLength === null){//Cancel
+    window.alert("Cancel Button was clicked!");
+    return;
+  }else if (passwordLength === "") {//nothing was entered
     window.alert("You need to provide a valid answer! Please try again.");
     return generatePassword();
   }  else if(parseInt(passwordLength).toString() === "NaN"){  //Not a number
