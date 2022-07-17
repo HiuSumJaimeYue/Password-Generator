@@ -25,6 +25,18 @@ function generatePassword(){
     newPassword = parseInt(passwordLength);
   }
 
+  //Asking what character types to include
+  var isLowercase = window.confirm("Want lowercase characters?");
+  var isUppercase = window.confirm("Want uppercase characters?");
+  var isNumbers = window.confirm("Want numbers?");
+  var isSpecialChar = window.confirm("Want special characters?");
+  // if (isSpecialChar === true) {
+  //   window.alert("You pressed OK!");
+  // } else {
+  //   window.alert("You pressed canceled!");
+  // }
+
+
 
 
   return newPassword;
