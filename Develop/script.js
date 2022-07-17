@@ -1,7 +1,7 @@
 // Assignment code here
 //gernerate new password
 function generatePassword(){
-  var newPassword;
+  var newPassword, newPasswordLength;
   // ask user if the length of the password
   var passwordLength = window.prompt('How many characters would you like your password to have?(Within 8-128)');
   // Conditional recursive function call on passwordLength
@@ -22,7 +22,7 @@ function generatePassword(){
     window.alert("You need to provide a valid integer within 8 to 128 without decimals! Please try again.");
     return generatePassword();
   }else{
-    newPassword = parseInt(passwordLength);
+    newPasswordLength = parseInt(passwordLength);
   }
 
   //Asking what character types to include
@@ -36,9 +36,16 @@ function generatePassword(){
   //   window.alert("You pressed canceled!");
   // }
 
+  // declare character types
+  var upper ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lower = "abcdefghijklmnopqrstuvwxyz";
+  var num = "0123456789";
+  var special = " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+  
+  // var newPasswordList = ["2","r","+"];
 
 
-
+  // newPassword = newPasswordList.join('');
   return newPassword;
 }
 
