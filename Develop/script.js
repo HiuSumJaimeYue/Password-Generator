@@ -1,7 +1,31 @@
 // Assignment code here
-document.getElementById("generate").onclick = function(){
-  writePassword();
-};
+//gernerate new password
+function generatePassword(){
+  var newPassword;
+  // ask user if the length of the password
+  var passwordLength = window.prompt('How many characters would you like your password to have?(Within 8-128)');
+  // Conditional recursive function call on passwordLength
+  if (passwordLength === "" || passwordLength === null) {
+    window.alert("You need to provide a valid answer! Please try again.");
+    return generatePassword();
+  }  else if(parseInt(passwordLength).toString() === "NaN"){  //Not a number
+      window.alert("You need to provide a valid integer! Please try again.");
+      return generatePassword();
+  }else if(parseInt(passwordLength) < 8 || parseInt(passwordLength) > 128){  //Not within 8 to 128
+    window.alert("You need to provide a valid integer within 8 to 128! Please try again.");
+    return generatePassword();
+  }
+  else if(parseInt(passwordLength) % 1 !== 0){  //Not an integer
+    window.alert("You need to provide a valid integer within 8 to 128 without decimals! Please try again.");
+    return generatePassword();
+  }else{
+    newPassword = parseInt(passwordLength);
+  }
+
+
+
+  return newPassword;
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -14,12 +38,7 @@ function writePassword() {
   passwordText.value = password;
 
 }
-function generatePassword(){
-  var newPassword;
 
-  newPassword = "password";
-  return newPassword;
-}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
