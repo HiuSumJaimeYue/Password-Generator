@@ -6,6 +6,7 @@ function generatePassword(){
 
   // ask user if the length of the password
   var passwordLength = window.prompt('How many characters would you like your password to have?(Within 8-128)');
+
   // Conditional recursive function call on passwordLength
   if(passwordLength === null){//Cancel
     window.alert("Cancel Button was clicked!");
@@ -20,7 +21,7 @@ function generatePassword(){
     window.alert("You need to provide a valid integer within 8 to 128! Please try again.");
     return generatePassword();
   }
-  else if(parseInt(passwordLength) % 1 !== 0){  //Not an integer
+  else if((Number(passwordLength) % 1 !== 0)){  //Not an integer
     window.alert("You need to provide a valid integer within 8 to 128 without decimals! Please try again.");
     return generatePassword();
   }else{
@@ -62,11 +63,11 @@ function generatePassword(){
     }
     return charactersPicked;
   }
-  
+
   var charactersList = getCharactersPicked();
-  console.log(charactersList);
   var newPasswordList = "";
 
+  //Generate random password with selected Characters list
   for (var i = 0; i < newPasswordLength; i++){
     var random = Math.floor(Math.random() * charactersList.length);
     var randomChar = charactersList.charAt(random);
@@ -89,7 +90,6 @@ function writePassword() {
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
   }
-
 }
 
 // Add event listener to generate button
