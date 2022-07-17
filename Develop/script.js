@@ -1,7 +1,9 @@
 // Assignment code here
 //gernerate new password
 function generatePassword(){
-  var newPassword, newPasswordLength;
+
+  var newPasswordLength;
+
   // ask user if the length of the password
   var passwordLength = window.prompt('How many characters would you like your password to have?(Within 8-128)');
   // Conditional recursive function call on passwordLength
@@ -25,32 +27,33 @@ function generatePassword(){
     newPasswordLength = parseInt(passwordLength);
   }
 
+  //a function for getting a selected character list
   var getCharactersPicked = function(){
     var charactersPicked = "";
     //Asking what character types to include
     var isLowercase = window.confirm("Want lowercase characters?");
     if (isLowercase === true) {
-      var upper ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      charactersPicked += upper;
-    }
-    var isUppercase = window.confirm("Want uppercase characters?");
-    if (isUppercase === true) {
       var lower = "abcdefghijklmnopqrstuvwxyz";
       charactersPicked += lower;
     }
+
+    var isUppercase = window.confirm("Want uppercase characters?");
+    if (isUppercase === true) {
+      var upper ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      charactersPicked += upper;
+    }
+
     var isNumbers = window.confirm("Want numbers?");
     if (isNumbers === true) {
       var num = "0123456789";
       charactersPicked += num;
     }
+
     var isSpecialChar = window.confirm("Want special characters?");
     if (isSpecialChar === true) {
       var special = " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
       charactersPicked += special;
     }
-
-    // console.log(charactersPicked);
-    // console.log(charactersPicked.length);
 
     //Conditional recursive function call on no type picked
     if (charactersPicked === ""){
@@ -59,16 +62,18 @@ function generatePassword(){
     }
     return charactersPicked;
   }
+  
   var charactersList = getCharactersPicked();
   console.log(charactersList);
-  // var newPasswordList = ["2","r","+"];
-  var random = Math.floor(Math.random() * charactersList.length);
-  console.log(random);
+  var newPasswordList = "";
 
+  for (var i = 0; i < newPasswordLength; i++){
+    var random = Math.floor(Math.random() * charactersList.length);
+    var randomChar = charactersList.charAt(random);
+    newPasswordList += randomChar;
+  }
 
-
-  // newPassword = newPasswordList.join('');
-  return newPassword;
+  return newPasswordList;
 }
 
 // Get references to the #generate element
@@ -86,7 +91,6 @@ function writePassword() {
   }
 
 }
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
