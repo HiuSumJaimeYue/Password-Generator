@@ -10,7 +10,7 @@ Starter code from https://github.com/coding-boot-camp/friendly-parakeet
 Deployed application:  https://hiusumjaimeyue.github.io/Password-Generator/      
 Github repository: https://github.com/HiuSumJaimeYue/Password-Generator        
 
-Screenshot of the web application are included in this repository.        
+Screenshot of the web application is included below.        
 ![pwGenerator Preview](https://github.com/HiuSumJaimeYue/Password-Generator/blob/main/screenshot/pwGeneratorPreview.jpg "pwGenerator Preview")  
 
 
