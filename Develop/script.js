@@ -25,24 +25,46 @@ function generatePassword(){
     newPasswordLength = parseInt(passwordLength);
   }
 
-  //Asking what character types to include
-  var isLowercase = window.confirm("Want lowercase characters?");
-  var isUppercase = window.confirm("Want uppercase characters?");
-  var isNumbers = window.confirm("Want numbers?");
-  var isSpecialChar = window.confirm("Want special characters?");
-  // if (isSpecialChar === true) {
-  //   window.alert("You pressed OK!");
-  // } else {
-  //   window.alert("You pressed canceled!");
-  // }
+  var getCharactersPicked = function(){
+    var charactersPicked = "";
+    //Asking what character types to include
+    var isLowercase = window.confirm("Want lowercase characters?");
+    if (isLowercase === true) {
+      var upper ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      charactersPicked += upper;
+    }
+    var isUppercase = window.confirm("Want uppercase characters?");
+    if (isUppercase === true) {
+      var lower = "abcdefghijklmnopqrstuvwxyz";
+      charactersPicked += lower;
+    }
+    var isNumbers = window.confirm("Want numbers?");
+    if (isNumbers === true) {
+      var num = "0123456789";
+      charactersPicked += num;
+    }
+    var isSpecialChar = window.confirm("Want special characters?");
+    if (isSpecialChar === true) {
+      var special = " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+      charactersPicked += special;
+    }
 
-  // declare character types
-  var upper ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var lower = "abcdefghijklmnopqrstuvwxyz";
-  var num = "0123456789";
-  var special = " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
-  
+    // console.log(charactersPicked);
+    // console.log(charactersPicked.length);
+
+    //Conditional recursive function call on no type picked
+    if (charactersPicked === ""){
+      window.alert("At least one character type should be selected!");
+      return getCharactersPicked();
+    }
+    return charactersPicked;
+  }
+  var charactersList = getCharactersPicked();
+  console.log(charactersList);
   // var newPasswordList = ["2","r","+"];
+  var random = Math.floor(Math.random() * charactersList.length);
+  console.log(random);
+
 
 
   // newPassword = newPasswordList.join('');
